@@ -1,0 +1,24 @@
+{
+  "atDirectives": [
+    {
+      "name": "@theme",
+      "description": "Tailwind CSS 4 theme block"
+    },
+    {
+      "name": "@config",
+      "description": "Tailwind CSS 4 configuration file import"
+    },
+    {
+      "name": "@utility",
+      "description": "Tailwind CSS 4 utility definition"
+    },
+    {
+      "name": "@variant",
+      "description": "Tailwind CSS 4 variant definition"
+    },
+    {
+      "name": "@import",
+      "description": "Standard CSS import, also used by Tailwind CSS 4"
+    }
+  ]
+}
