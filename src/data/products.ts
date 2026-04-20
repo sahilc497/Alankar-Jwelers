@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'Necklaces' | 'Rings' | 'Earrings' | 'Bracelets' | 'Bangles' | 'Anklets' | 'Idols' | 'Chains' | 'Kadas';
+  category: 'Necklaces' | 'Rings' | 'Earrings' | 'Bracelets' | 'Bangles' | 'Anklets' | 'Idols' | 'Chains' | 'Kadas' | 'Gold Coins' | 'Silver Coins';
   collection: 'Heritage' | 'Modern' | 'Sacred' | 'Silver';
   audience: 'Men' | 'Women' | 'Unisex';
   price: string;

@@ -5,22 +5,27 @@ import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/Layout';
 import Card from '@/components/ui/Card';
-import { products } from '@/data/products';
-const collections = ['All', 'Heritage', 'Modern', 'Sacred', 'Silver'];
+import { Product } from '@/data/products';
+
+const categories = ['All', 'Rings', 'Necklaces', 'Earrings', 'Bracelets', 'Bangles', 'Anklets', 'Idols', 'Chains', 'Kadas', 'Gold Coins', 'Silver Coins'];
 const audiences = ['All', 'Men', 'Women', 'Unisex'];
 
-export default function ProductsContent() {
-  const searchParams = useSearchParams();
-  const initialCollection = searchParams.get('collection') || 'All';
+interface ProductsContentProps {
+  serverProducts: Product[];
+}
 
-  const [activeCollection, setActiveCollection] = useState(initialCollection);
+export default function ProductsContent({ serverProducts }: ProductsContentProps) {
+  const searchParams = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'All';
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
   const initialAudience = searchParams.get('audience') || 'All';
   const [activeAudience, setActiveAudience] = useState(initialAudience);
 
-  const filteredProducts = products.filter(p => {
-    const matchesCollection = activeCollection === 'All' || p.collection === activeCollection;
+  const filteredProducts = serverProducts.filter(p => {
+    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
     const matchesAudience = activeAudience === 'All' || p.audience === activeAudience;
-    return matchesCollection && matchesAudience;
+    return matchesCategory && matchesAudience;
   });
 
   return (
@@ -32,7 +37,7 @@ export default function ProductsContent() {
             <div className="max-w-3xl mb-12">
               <span className="text-[10px] tracking-[0.4em] uppercase mb-4 block font-sans">The Repository</span>
               <h1 className="text-6xl md:text-8xl font-serif italic mb-8">
-                {activeCollection === 'All' ? 'Complete' : activeCollection} *Collections*
+                {activeCategory === 'All' ? 'Complete' : activeCategory} *Selections*
               </h1>
               <p className="font-serif italic text-xl text-foreground/60 leading-relaxed">
                 An archive where geometry meets heritage. From the sacred deities of 22k gold to the architectural minimalist bands of tomorrow.
@@ -41,21 +46,21 @@ export default function ProductsContent() {
             
             {/* Dual Filter UI */}
             <div className="space-y-8">
-              {/* Collection Filter */}
+              {/* Category Filter */}
               <div className="flex flex-wrap gap-x-8 gap-y-4 border-b border-foreground/10 pb-4">
-                <span className="text-[8px] tracking-[0.3em] uppercase opacity-40 w-full md:w-auto mb-2 md:mb-0">Collection</span>
-                {collections.map((coll) => (
+                <span className="text-[8px] tracking-[0.3em] uppercase opacity-40 w-full md:w-auto mb-2 md:mb-0">Jewelry Type</span>
+                {categories.map((cat) => (
                   <button
-                    key={coll}
-                    onClick={() => setActiveCollection(coll)}
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
                     className={`text-[10px] tracking-[0.3em] uppercase transition-all duration-500 relative ${
-                      activeCollection === coll ? 'text-accent' : 'text-foreground/40 hover:text-foreground'
+                      activeCategory === cat ? 'text-accent' : 'text-foreground/40 hover:text-foreground'
                     }`}
                   >
-                    {coll}
-                    {activeCollection === coll && (
+                    {cat}
+                    {activeCategory === cat && (
                       <motion.div 
-                        layoutId="collection-underline"
+                        layoutId="category-underline"
                         className="absolute -bottom-[17px] left-0 right-0 h-px bg-accent"
                       />
                     )}
