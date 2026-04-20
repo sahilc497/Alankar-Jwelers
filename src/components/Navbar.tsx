@@ -23,7 +23,7 @@ export default function Navbar() {
         </div>
 
         <Link href="/" className="shrink-0 z-50">
-          <h1 className="text-xl md:text-3xl tracking-[0.1em] md:tracking-[0.2em] font-serif uppercase">
+          <h1 className="text-xl md:text-3xl tracking-widest md:tracking-[0.2em] font-serif uppercase">
             Alankar Jwelers
           </h1>
         </Link>
