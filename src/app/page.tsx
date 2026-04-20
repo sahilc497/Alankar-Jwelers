@@ -9,7 +9,6 @@ import Card from '@/components/ui/Card';
 import { products } from '@/data/products';
 
 export default function Home() {
-  const heritageProducts = products.filter(p => p.collection === 'Heritage').slice(0, 3);
   const modernProducts = products.filter(p => p.collection === 'Modern').slice(0, 3);
   const sacredProducts = products.filter(p => p.collection === 'Sacred').slice(0, 3);
   const silverProducts = products.filter(p => p.collection === 'Silver' && p.category === 'Idols').slice(0, 3);

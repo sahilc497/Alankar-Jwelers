@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ShoppingBag, Search, Menu } from 'lucide-react';
 

@@ -1,20 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/Layout';
 import Card from '@/components/ui/Card';
-import { products, Product } from '@/data/products';
-
-const categories = ['All', 'Necklaces', 'Bangles', 'Earrings', 'Rings', 'Anklets', 'Idols', 'Chains', 'Kadas'];
+import { products } from '@/data/products';
 const collections = ['All', 'Heritage', 'Modern', 'Sacred', 'Silver'];
 const audiences = ['All', 'Men', 'Women', 'Unisex'];
 
 export default function ProductsContent() {
   const searchParams = useSearchParams();
   const initialCollection = searchParams.get('collection') || 'All';
-  const initialCategory = searchParams.get('category') || 'All';
 
   const [activeCollection, setActiveCollection] = useState(initialCollection);
   const initialAudience = searchParams.get('audience') || 'All';
