@@ -9,106 +9,281 @@ import Card from '@/components/ui/Card';
 import { products } from '@/data/products';
 
 export default function Home() {
-  const featuredProducts = products.slice(0, 3);
+  const heritageProducts = products.filter(p => p.collection === 'Heritage').slice(0, 3);
+  const modernProducts = products.filter(p => p.collection === 'Modern').slice(0, 3);
+  const sacredProducts = products.filter(p => p.collection === 'Sacred').slice(0, 3);
+  const silverProducts = products.filter(p => p.collection === 'Silver' && p.category === 'Idols').slice(0, 3);
+  const mensProducts = products.filter(p => p.audience === 'Men').slice(0, 3);
+
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 py-24 overflow-hidden">
+      {/* Hero Section - Magazine Spread Style */}
+      <section className="relative h-screen flex flex-col justify-end px-6 md:px-12 pb-24 overflow-hidden bg-foreground">
+        {/* Background Hero Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/products/heritage-hero.png"
+            alt="Alankar Heritage hero"
+            fill
+            priority
+            className="object-cover object-center opacity-70 scale-105 transition-transform duration-[10s] hover:scale-100"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-foreground via-transparent to-transparent " />
+        </div>
+
         <div className="max-w-[1800px] mx-auto w-full relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+            transition={{ duration: 1.5, ease: [0.19, 1, 0.22, 1] }}
           >
-            <span className="inline-block text-[10px] tracking-[0.4em] uppercase mb-8 font-sans">
-              Collection 2026
+            <span className="inline-block text-[10px] tracking-[0.6em] uppercase mb-8 font-sans text-white/60">
+              The Heritage Archive &bull; 2026
             </span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl leading-[0.9] mb-12">
-              Timeless <br />
-              <i className="font-serif italic font-normal text-accent">Elegance</i>
+            <h1 className="text-7xl md:text-9xl lg:text-[12rem] leading-[0.8] mb-12 text-white overflow-hidden">
+              Legacy <br />
+              <i className="font-serif italic font-normal text-accent">Defining</i>
             </h1>
-            <p className="max-w-xl text-lg md:text-xl font-serif italic text-foreground/60 mb-12 leading-relaxed">
-              &ldquo;Jewelry is the most intimate of arts, a silent dialogue between the body and the earth's deepest secrets.&rdquo;
-            </p>
-            <div className="flex gap-6">
-              <Button onClick={() => window.location.href = '/products'}>
-                View High Jewelry
-              </Button>
+            <div className="flex flex-col md:flex-row gap-12 items-start md:items-end">
+              <p className="max-w-md text-lg md:text-xl font-serif italic text-white/60 leading-relaxed">
+                Celebrating the soul of Maharashtra. Where ancestral craftsmanship meets the gaze of modern luxury.
+              </p>
+              <div className="flex gap-6">
+                <Button className="bg-white text-black hover:bg-accent hover:text-white" onClick={() => window.location.href = '/products?collection=Heritage'}>
+                  Explore Heritage
+                </Button>
+              </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Decorative Grid Element */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block pr-12">
-          <div className="vertical-label text-[10px] tracking-[0.5em] uppercase opacity-30 pb-24 border-r border-foreground/20">
-            Architectural Precision &bull; Handcrafted Legacy
+        {/* Vertical Text */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block pr-12 z-10">
+          <div className="vertical-label text-[10px] tracking-[0.5em] uppercase text-white/30 pb-24 border-r border-white/10">
+            Alankar Jwelers &mdash; Since 1994
           </div>
         </div>
       </section>
 
-      {/* Featured Collection Section (Asymmetric) */}
-      <section className="px-6 md:px-12 py-32 border-t border-foreground/10">
+      {/* Modern Minimalism Section */}
+      <section className="px-6 md:px-12 py-32 bg-white border-t border-foreground/10">
         <div className="max-w-[1800px] mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
-            <h2 className="text-4xl md:text-5xl italic font-serif max-w-md">
-              The *Aura* of <br />Permanent Classics
-            </h2>
+            <div>
+              <span className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4 block">New Direction</span>
+              <h2 className="text-5xl md:text-7xl italic font-serif">Modern *Minimalism*</h2>
+            </div>
             <div className="hidden md:block w-px h-24 bg-foreground/20" />
             <p className="max-w-sm font-sans text-xs tracking-widest leading-loose opacity-60">
-              EXPLORE OUR CURATED SELECTION OF PIECES THAT DEFINE THE MODERN SILHOUETTE, BLENDING SHARP GEOMETRY WITH THE SOFT GLOW OF 18K GOLD.
+              SHARP GEOMETRY. SUBTLE ELEGANCE. PIECES DESIGNED FOR THE CONTEMPORARY SILHOUETTE, CRAFTED IN PRECISION-MILLED 18K GOLD.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-            <div className="md:col-span-7">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+            {modernProducts.map((product) => (
               <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1.5 }}
-                className="relative aspect-4/5 bg-foreground/5 overflow-hidden"
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
               >
-                <Image
-                  src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&q=80&w=1600"
-                  alt="Editorial Jewelry"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 70vw"
-                  className="object-cover grayscale-hover editorial-transition"
-                />
+                <Card product={product} />
               </motion.div>
-            </div>
-            <div className="md:col-span-5 md:pt-24">
-              <span className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4 block">New Arrival</span>
-              <h3 className="text-3xl font-serif italic mb-6">The Void *Amulet*</h3>
-              <p className="font-serif italic text-lg leading-relaxed text-foreground/70 mb-12">
-                A study in negative space. The Void Amulet features a floating sapphire within a precision-milled gold frame, capturing the essence of editorial minimalism.
-              </p>
-              <Link href="/products/1" className="inline-block border-b border-foreground pb-2 text-xs tracking-widest uppercase hover:text-accent hover:border-accent transition-colors duration-500">
-                Discover the Piece
-              </Link>
-            </div>
+            ))}
+          </div>
+          
+          <div className="mt-24 text-center">
+            <Link href="/products?collection=Modern" className="text-xs tracking-[0.4em] uppercase border-b border-foreground/20 pb-2 hover:border-accent transition-colors">
+              View All Modern Pieces
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Product Showcase */}
-      <section className="px-6 md:px-12 py-32 bg-foreground/5">
-        <div className="max-w-[1800px] mx-auto text-center mb-24">
-          <h2 className="text-6xl md:text-7xl font-serif italic mb-6">Editorial *Selection*</h2>
-          <div className="w-24 h-px bg-foreground/20 mx-auto" />
-        </div>
-
-        <div className="max-w-[1800px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
-          {featuredProducts.map((product) => (
+      {/* Heritage Showcase Section */}
+      <section className="px-6 md:px-12 py-32 bg-foreground text-background overflow-hidden relative">
+        {/* Subtle Pattern Background Overlay could go here */}
+        <div className="max-w-[1800px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
             <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2 }}
             >
-              <Card product={product} />
+              <span className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4 block">Heirloom Craft</span>
+              <h2 className="text-5xl md:text-8xl font-serif italic mb-8 text-white">The Art of <br />the *Kolhapuri*</h2>
+              <p className="text-xl font-serif italic text-white/70 mb-12 leading-relaxed max-w-lg">
+                Hand-carved stories in gold. Every Tode and Saaj is a testament to a legacy of craftsmanship that has defined Maharashtrian royalty for decades.
+              </p>
+              <div className="grid grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                <div>
+                  <h4 className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4">Origin</h4>
+                  <p className="text-xs tracking-widest uppercase opacity-60">Maharashtra, IN</p>
+                </div>
+                <div>
+                  <h4 className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4">Technique</h4>
+                  <p className="text-xs tracking-widest uppercase opacity-60">Hand-Stamped / Carved</p>
+                </div>
+              </div>
+              <div className="mt-12">
+                 <Link href="/products?collection=Heritage" className="inline-block bg-accent text-foreground px-10 py-5 text-[10px] tracking-[0.4em] uppercase hover:bg-white transition-colors duration-500">
+                  Explore The Collection
+                </Link>
+              </div>
             </motion.div>
-          ))}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5 }}
+              className="relative aspect-square md:aspect-3/4 group"
+            >
+              <Image
+                src="/products/kolhapuri-saaj.png"
+                alt="Maharashtrian Heritage"
+                fill
+                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+              />
+              <div className="absolute bottom-12 right-12 text-white/40 text-[8px] tracking-[0.5em] uppercase vertical-label h-48 border-r border-white/20 pb-8">
+                Editorial Showcase &bull; Alankar
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Sovereign Man Section */}
+      <section className="px-6 md:px-12 py-32 bg-white border-t border-foreground/10 text-foreground">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-24 gap-12">
+            <div className="max-w-2xl">
+              <span className="text-accent text-[10px] tracking-[0.3em] font-sans uppercase mb-4 block">Menswear Collection</span>
+              <h2 className="text-5xl md:text-8xl font-serif italic mb-6">The Sovereign <br/> *Man*</h2>
+              <p className="font-serif italic text-xl text-foreground/70 leading-relaxed">
+                Raw architectural details for the modern gentleman. Forged in heavy gold, platinum, and oxidized silver.
+              </p>
+            </div>
+            <div className="w-full lg:w-1/2">
+              <div className="relative aspect-video lg:aspect-21/9 w-full overflow-hidden filter grayscale contrast-125">
+                 <Image
+                    src="/products/mens-hero-lifestyle.png"
+                    alt="The Sovereign Man Lifestyle"
+                    fill
+                    className="object-cover object-top"
+                 />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+            {mensProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="group"
+              >
+                <div className="relative aspect-3/4 mb-8 overflow-hidden bg-foreground/5">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Link href={`/products?audience=Men`} className="px-8 py-3 bg-white text-black text-[8px] tracking-[0.4em] uppercase">
+                      View Collection
+                    </Link>
+                  </div>
+                </div>
+                <h3 className="text-2xl font-serif italic mb-2 text-foreground">{product.name}</h3>
+                <div className="flex justify-between items-center">
+                  <p className="text-[10px] tracking-[0.2em] font-sans uppercase text-foreground/60">{product.price}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Silver Craftsmanship Section */}
+      <section className="px-6 md:px-12 py-32 bg-[#F0F2F5] border-t border-foreground/10">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+            <div>
+              <span className="text-gray-500 text-[10px] tracking-[0.4em] font-sans uppercase mb-4 block">A New Era</span>
+              <h2 className="text-5xl md:text-7xl italic font-serif text-gray-800">Silver *Heirlooms*</h2>
+            </div>
+            <div className="hidden md:block w-px h-24 bg-gray-300" />
+            <p className="max-w-sm font-sans text-xs tracking-widest leading-loose opacity-70 text-gray-700">
+              EXPLORE OUR ARCHIVE OF 999 PURE SILVER IDOLS AND TRADITIONAL MAHARASHTRIAN ADORNMENTS.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+            {silverProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Card product={product} />
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="mt-24 text-center">
+            <Link href="/products?collection=Silver" className="text-xs tracking-[0.4em] uppercase border-b border-gray-400 pb-2 hover:border-gray-800 text-gray-700 hover:text-gray-900 transition-colors">
+              View The Full Silver Archive
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Sacred Gold Section (Dark Section) */}
+      <section className="px-6 md:px-12 py-32 bg-[#0D0D0D] text-background">
+        <div className="max-w-[1800px] mx-auto">
+          <div className="text-center mb-32">
+            <span className="text-accent text-[10px] tracking-[0.6em] font-sans uppercase mb-8 block">Sacred Gold</span>
+            <h2 className="text-6xl md:text-8xl font-serif italic mb-6 text-white text-glow">Divine *Idols*</h2>
+            <div className="w-24 h-px bg-accent/40 mx-auto" />
+            <p className="mt-12 max-w-xl mx-auto font-serif italic text-xl text-white/50">
+              Intricately detailed 22k gold deities. A bridge between the divine and the physical, crafted for the sacred spaces within your home.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+            {sacredProducts.map((product) => (
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <div className="group block text-center">
+                  <div className="relative aspect-4/5 bg-white/5 mb-8 overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                       <Link href={`/products/${product.id}`} className="px-8 py-3 bg-white text-black text-[8px] tracking-[0.4em] uppercase">
+                        View Details
+                       </Link>
+                    </div>
+                  </div>
+                  <h3 className="text-2xl font-serif italic mb-2 text-white border-b border-transparent inline-block group-hover:border-accent transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-[10px] tracking-[0.2em] font-sans uppercase text-accent">{product.price}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -119,18 +294,6 @@ export default function Home() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <div className="relative mb-16 inline-block">
-            <div className="absolute -inset-8 border border-accent/20 animate-pulse" />
-            <div className="relative w-24 h-24 overflow-hidden rounded-full mx-auto grayscale group-hover:grayscale-0 transition-all duration-2000">
-              <Image
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400"
-                alt="Elite Client"
-                fill
-                sizes="96px"
-                className="object-cover"
-              />
-            </div>
-          </div>
           <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-12">
             &ldquo;In a world of fast fashion, Alankar Jwelers remains a bastion of architectural integrity. Their pieces don&rsquo;t just decorate; they command.&rdquo;
           </p>
@@ -139,6 +302,7 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
       {/* Boutique Location Section */}
       <section className="px-6 md:px-12 py-32 border-t border-foreground/10 bg-white">
         <div className="max-w-[1800px] mx-auto">
@@ -154,8 +318,7 @@ export default function Home() {
                 </p>
                 <div className="w-12 h-px bg-accent" />
                 <p className="font-sans text-[10px] tracking-[0.2em] uppercase opacity-60">
-                  Monday &mdash; Saturday<br />
-                  10:00 AM &mdash; 8:00 PM
+                  M: +91 78219 21512
                 </p>
               </div>
               <Button onClick={() => window.open('https://maps.google.com/?q=Alankar+Jewellers+Ajara', '_blank')}>
