@@ -113,10 +113,10 @@ export default function AdminPage() {
   if (!isAuthenticated) {
     return (
       <Layout>
-        <div className="max-w-md mx-auto py-48 px-6">
+        <div className="max-w-md mx-auto py-24 md:py-48 px-4 md:px-6">
           <h1 className="text-3xl font-serif italic mb-8 text-center">Admin Login</h1>
           {loginError && <p className="text-red-600 mb-6 text-center text-sm">{loginError}</p>}
-          <form onSubmit={handleLogin} className="space-y-6 bg-white p-8 border border-gray-200">
+          <form onSubmit={handleLogin} className="space-y-4 md:space-y-6 bg-white p-6 md:p-8 border border-gray-200">
             <div>
               <label className="block text-xs uppercase tracking-widest mb-2">Username</label>
               <input required type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full border p-3 focus:outline-none" />
@@ -136,17 +136,17 @@ export default function AdminPage() {
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto py-32 px-6">
-        <h1 className="text-4xl font-serif italic mb-8">Admin Dashboard</h1>
+      <div className="max-w-4xl mx-auto py-16 md:py-32 px-4 md:px-6">
+        <h1 className="text-3xl md:text-4xl font-serif italic mb-8 text-center md:text-left">Admin Dashboard</h1>
         
         {message && (
-          <div className={`p-4 mb-8 ${message.includes('Error') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+          <div className={`p-4 mb-4 md:mb-8 text-sm md:text-base ${message.includes('Error') ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
             {message}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 border border-gray-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6 bg-white p-6 md:p-8 border border-gray-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
              <div>
               <label className="block text-xs uppercase tracking-widest mb-2">Product Name</label>
               <input required type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full border p-3" />
