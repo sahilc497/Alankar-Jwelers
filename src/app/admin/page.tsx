@@ -10,6 +10,12 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   
+  // Security Lock State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  
   const [formData, setFormData] = useState({
     name: '',
     category: 'Rings',
@@ -93,6 +99,40 @@ export default function AdminPage() {
       setLoading(false);
     }
   };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (username === 'Admin' && password === 'Admin@123') {
+      setIsAuthenticated(true);
+      setLoginError('');
+    } else {
+      setLoginError('Invalid credentials');
+    }
+  };
+
+  if (!isAuthenticated) {
+    return (
+      <Layout>
+        <div className="max-w-md mx-auto py-48 px-6">
+          <h1 className="text-3xl font-serif italic mb-8 text-center">Admin Login</h1>
+          {loginError && <p className="text-red-600 mb-6 text-center text-sm">{loginError}</p>}
+          <form onSubmit={handleLogin} className="space-y-6 bg-white p-8 border border-gray-200">
+            <div>
+              <label className="block text-xs uppercase tracking-widest mb-2">Username</label>
+              <input required type="text" value={username} onChange={e => setUsername(e.target.value)} className="w-full border p-3 focus:outline-none" />
+            </div>
+            <div>
+              <label className="block text-xs uppercase tracking-widest mb-2">Password</label>
+              <input required type="password" value={password} onChange={e => setPassword(e.target.value)} className="w-full border p-3 focus:outline-none" />
+            </div>
+            <Button type="submit" className="w-full bg-black text-white py-4 mt-4">
+              Access Vault
+            </Button>
+          </form>
+        </div>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
