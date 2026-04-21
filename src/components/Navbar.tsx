@@ -2,8 +2,12 @@
 
 import Link from 'next/link';
 import { ShoppingBag, Search, Menu } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 export default function Navbar() {
+  const { cartItems } = useCart();
+  const itemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <nav className="sticky top-0 z-60 bg-background/80 backdrop-blur-sm border-b border-foreground/10 px-6 md:px-12 py-6">
       <div className="max-w-[1800px] mx-auto flex justify-between items-center">
@@ -34,7 +38,11 @@ export default function Navbar() {
           </button>
           <Link href="/cart" className="hover:text-accent transition-colors relative">
             <ShoppingBag size={18} strokeWidth={1} />
-            <span className="absolute -top-1 -right-1 text-[8px] bg-accent text-white px-1 leading-none rounded-full">0</span>
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 text-[8px] bg-accent text-white px-1 font-sans leading-tight rounded-full min-w-[14px] text-center">
+                {itemCount}
+              </span>
+            )}
           </Link>
           <button className="md:hidden">
             <Menu size={18} strokeWidth={1} />

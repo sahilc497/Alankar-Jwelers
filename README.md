@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alankar Jwelers | Fine Jewelry E-Commerce 
 
-## Getting Started
+A luxury editorial-style jewelry e-commerce platform built on modern web technologies. This project emphasizes a premium, print-inspired brutalist/editorial aesthetic, high-performance interactions, and a complete end-to-end administration backend.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router) + React 19
+- **Styling**: Tailwind CSS v4, Custom CSS variables, and dynamic typographic layouts.
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Backend & Database**: [Supabase](https://supabase.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 💎 Features
+
+### Client Storefront
+- **Editorial Design System**: A strict focus on typography (Playfair Display & Inter), monochrome accents, sophisticated vertical labels, and glassmorphic micro-interactions.
+- **Dynamic Catalog**: Products are fetched in real-time from the Supabase `products` database, mapped to visual categories like *Heritage*, *Sacred*, and *Menswear*.
+- **Cart System**: A fully functional, locally persistent, global Cart state powered by React Context.
+- **Checkout Flow**: A seamless checkout experience that calculates total costs with taxes, captures customer shipping details, and injects live transactions securely into the database.
+
+### Admin "Control Vault" (`/admin`)
+- **Secure Access**: Gate-kept entry requires specific credentials (`Admin` / `Admin@123`).
+- **Product Publishing**: Upload high-resolution images via Supabase Storage and push new jewelry pieces into the ecosystem simply with a sleek editorial form.
+- **Order Management**: Features an "Incoming Acquisitions" tab that fetches live purchase data directly from the Supabase `orders` table. Tracks timestamps, total fiat value, line-item item manifests, and real-time fulfillment statuses.
+
+## 🛠 Prerequisites
+
+To run this project, make sure you have interconnected a live Supabase project.
+
+1. Set up your `.env.local` file with your appropriate securely injected backend URLs:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+2. **Database Requirements:**
+Ensure your Supabase PostgreSQL instance has the `products` and `orders` tables active and available via standard RLS policies. 
+*The `orders` table requires an `items` jsonb column for cart item manifestations.*
+
+## 💻 Getting Started
+
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. Log into the control panel by visiting [http://localhost:3000/admin](http://localhost:3000/admin).
