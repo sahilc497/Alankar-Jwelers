@@ -18,6 +18,7 @@ export default function Card({ product }: CardProps) {
             alt={product.name}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            unoptimized={product.image?.startsWith('http')}
             className="object-cover grayscale-hover editorial-transition"
           />
         </div>

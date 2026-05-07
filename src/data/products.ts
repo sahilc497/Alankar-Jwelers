@@ -22,7 +22,7 @@ export const products: Product[] = [
     price: '₹3,45,000',
     description: 'A legendary Maharashtrian gold necklace featuring 21 leaf-shaped pendants and a central Lakshmi motif.',
     longDescription: 'The Kolhapuri Saaj is an iconic piece of Maharashtrian heritage. Handcrafted in 22k yellow gold, it consists of 21 pendants representing different symbols of abundance and protection.',
-    image: '/products/kolhapuri-saaj.png',
+    image: '/products/heritage-necklace.png',
     details: ['22k Yellow Gold', 'Weight: 45g', 'Hand-stamped Lakshmi motif']
   },
   {
@@ -34,7 +34,7 @@ export const products: Product[] = [
     price: '₹1,25,000',
     description: 'A traditional choker made of closely woven gold beads, symbolizing prosperity.',
     longDescription: 'Each 22k gold bead is woven into a dense mesh, culminating in a central ruby pendant. It sits elegantly at the base of the neck.',
-    image: '/products/thushi.png',
+    image: '/products/thushi-new.png',
     details: ['22k Yellow Gold', 'Kemp Ruby Accents', 'Woven Bead Structure']
   },
   {
@@ -46,7 +46,7 @@ export const products: Product[] = [
     price: '₹48,500',
     description: 'The crowning jewel of Maharashtrian tradition: a pearl-encrusted nose ring with ruby highlights.',
     longDescription: 'This ब्राह्मणी (Brahmani) style Nath is handcrafted in 22k gold and features Basra pearls and a vibrant central ruby.',
-    image: '/products/nath.png',
+    image: '/products/nath-new.png',
     details: ['22k Yellow Gold', 'Natural Basra Pearls', 'Sanskriti-cut Ruby']
   },
   {
@@ -58,7 +58,7 @@ export const products: Product[] = [
     price: '₹2,85,000',
     description: 'Exquisitely carved 22k gold bangles with traditional Maharashtrian floral motifs.',
     longDescription: 'The Tode is a heavy, hand-carved bangle that represents the pinnacle of Maharashtrian goldsmithing. Featuring interlocking patterns and a polished finish.',
-    image: '/products/tode-bangles.png',
+    image: '/products/gold-bangles.png',
     details: ['22k Yellow Gold', 'Weight: 60g pair', 'Intricate Floral Carving']
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     price: '₹95,000',
     description: 'Traditional gold anklets featuring delicate chain work and musical gold beads.',
     longDescription: 'Handcrafted in 22k gold, these Paijan (anklets) are designed for grace and movement. The delicate sound of gold beads accompanies every step.',
-    image: '/products/paijan.png',
+    image: '/products/paijan-new.png',
     details: ['22k Yellow Gold', 'Hand-linked Chain', 'Polished Gold Beads']
   },
 
@@ -84,7 +84,7 @@ export const products: Product[] = [
     price: '₹2,08,250',
     description: 'A singular pearl suspended in a golden arc of architectural precision.',
     longDescription: 'Crafted with the refined silhouette of high-fashion editorials in mind, the Alabaster Orbit Necklace is a study in balance.',
-    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1200',
+    image: '/products/modern-necklace.png',
     details: ['18k Yellow Gold', 'South Sea Pearl (12mm)', 'Signature Sharp-Edge Clasp']
   },
   {
@@ -96,7 +96,7 @@ export const products: Product[] = [
     price: '₹1,53,000',
     description: 'A solid gold band marked by deliberate, hand-carved geometric facets.',
     longDescription: 'The Fracture Gold Band challenges the traditional continuity of the ring. Each facet is hand-carved to catch the light.',
-    image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=1200',
+    image: '/products/modern-ring.png',
     details: ['18k Yellow Gold', 'Matte Finish Interior', 'Polished Facets']
   },
   {
@@ -122,7 +122,7 @@ export const products: Product[] = [
     price: '₹4,20,000',
     description: 'A commanding 22k gold traditional Indian Kada designed for the modern gentleman.',
     longDescription: 'Solid, heavy, and undeniably powerful. This golden kada features a hidden clasp and subtle lion-head motifs inside the band.',
-    image: '/products/mens-gold-kada-clean.png',
+    image: '/products/mens-kada.png',
     details: ['22k Solid Gold', 'Weight: 80g', 'Lion-motif inner engraving']
   },
   {
@@ -146,7 +146,7 @@ export const products: Product[] = [
     price: '₹1,95,000',
     description: 'A striking geometric men’s ring forged in platinum and 18k yellow gold.',
     longDescription: 'Precision engineering meets luxury. The square platinum face is polished to a mirror finish, bordered by architectural gold steps.',
-    image: '/products/mens-gold-ring.png',
+    image: '/products/mens-ring.png',
     details: ['950 Platinum', '18k Yellow Gold', 'Solid Backing']
   },
   {
@@ -220,7 +220,7 @@ export const products: Product[] = [
     price: '₹1,45,000',
     description: 'A divine 22k gold idol of Lord Krishna, meticulously detailed for your sacred space.',
     longDescription: 'This small but powerful idol captures the playful and divine essence of Lord Krishna. Handcrafted with precision in pure 22k gold.',
-    image: '/products/krishna-idol.png',
+    image: '/products/gold-krishna.png',
     details: ['22k Yellow Gold', 'Height: 3 inches', 'Hand-carved Details']
   },
   {
@@ -282,7 +282,7 @@ export const products: Product[] = [
     price: '₹12,400',
     description: 'A pure silver idol of Lord Ganesha.',
     longDescription: 'Intricately crafted silver idol perfect for your home temple and gifting.',
-    image: '/products/silver/silver-idol-1.jpeg',
+    image: '/products/silver-ganesha.png',
     details: ['999 Pure Silver', 'Handcrafted', 'Spiritual Collection']
   },
   {
@@ -416,5 +416,29 @@ export const products: Product[] = [
     longDescription: 'Premium silver craftsmanship for sacred spaces.',
     image: '/products/silver/silver-idol-12.jpeg',
     details: ['999 Pure Silver', 'Hand-finished', 'Spiritual Collection']
+  },
+  {
+    id: 'gc1',
+    name: '24k Lakshmi Gold Coin',
+    category: 'Gold Coins',
+    collection: 'Sacred',
+    audience: 'Unisex',
+    price: '₹72,500',
+    description: 'A pure 24k gold coin featuring a detailed engraving of Goddess Lakshmi.',
+    longDescription: 'Invest in heritage. This 10g 24k pure gold coin is meticulously struck with a sacred Lakshmi motif, symbolizing wealth and prosperity.',
+    image: '/products/gold-coin.png',
+    details: ['24k Pure Gold', 'Weight: 10g', 'BIS Hallmarked']
+  },
+  {
+    id: 'sc1',
+    name: 'Pure Silver Ganesha Coin',
+    category: 'Silver Coins',
+    collection: 'Sacred',
+    audience: 'Unisex',
+    price: '₹2,500',
+    description: 'A brilliant 999 pure silver coin with a Ganesha motif.',
+    longDescription: 'Perfect for gifting and auspicious occasions. This 50g silver coin features a mirror finish and high-relief Ganesha engraving.',
+    image: '/products/silver-coin.png',
+    details: ['999 Pure Silver', 'Weight: 50g', 'Mirror Finish']
   }
 ];

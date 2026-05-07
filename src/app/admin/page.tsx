@@ -42,7 +42,11 @@ export default function AdminPage() {
       setOrders(data || []);
     } catch (e: any) {
       console.error(e);
-      setMessage(`Failed to fetch orders: ${e.message}`);
+      if (e.code === 'PGRST205') {
+        setMessage(`Table not found in schema cache. Please go to your Supabase Dashboard Settings > API and click "Reload Schema", then refresh this page.`);
+      } else {
+        setMessage(`Failed to fetch orders: ${e.message}`);
+      }
     } finally {
       setLoadingOrders(false);
     }

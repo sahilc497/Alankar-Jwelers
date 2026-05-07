@@ -29,6 +29,7 @@ export default function HomeContent({ products }: HomeContentProps) {
             alt="Alankar Heritage hero"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center opacity-70 scale-105 transition-transform duration-[10s] hover:scale-100"
           />
           <div className="absolute inset-0 bg-linear-to-t from-foreground via-transparent to-transparent " />
@@ -143,6 +144,7 @@ export default function HomeContent({ products }: HomeContentProps) {
                 src="/products/kolhapuri-saaj.png"
                 alt="Maharashtrian Heritage"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
               />
               <div className="absolute bottom-12 right-12 text-white/40 text-[8px] tracking-[0.5em] uppercase vertical-label h-48 border-r border-white/20 pb-8">
@@ -165,6 +167,7 @@ export default function HomeContent({ products }: HomeContentProps) {
                       src={product.image}
                       alt={product.name}
                       fill
+                      unoptimized={product.image?.startsWith('http')}
                       className="object-cover transition-transform duration-1000 hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -201,6 +204,7 @@ export default function HomeContent({ products }: HomeContentProps) {
                     src="/products/mens-hero-lifestyle.png"
                     alt="The Sovereign Man Lifestyle"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover object-top"
                  />
               </div>
@@ -221,6 +225,7 @@ export default function HomeContent({ products }: HomeContentProps) {
                     src={product.image}
                     alt={product.name}
                     fill
+                    unoptimized={product.image?.startsWith('http')}
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -265,6 +270,7 @@ export default function HomeContent({ products }: HomeContentProps) {
                       src={product.image}
                       alt={product.name}
                       fill
+                      unoptimized={product.image?.startsWith('http')}
                       className="object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

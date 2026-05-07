@@ -58,7 +58,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                     src={product.image}
                     alt={product.name || 'Product Image'}
                     fill
+                    priority
                     sizes="(max-width: 1024px) 100vw, 60vw"
+                    unoptimized={product.image?.startsWith('http')}
                     className="object-cover editorial-transition scale-100 group-hover:scale-110"
                   />
                 )}
